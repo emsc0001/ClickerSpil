@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+}
+
+img {
+  width: 100%;
+}
+
+#screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+#game {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+#start {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  /* udkommenteret da der  ikke er et billede */
+  /* background-image: url(svg/start.svg);
+  background-size: cover; */
+}
+#game_over {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  /* udkommenteret da der  ikke er et billede */
+  /* background-image: url(svg/game_over.svg);
+  background-size: cover; */
+}
+#level_complete {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  /* udkommenteret da der  ikke er et billede */
+  /* background-image: url(svg/level_complete.svg);
+  background-size: cover; */
+}
+#game_background {
+  background-image: url(https://cdn.pixabay.com/photo/2022/12/03/22/53/rainforest-7633483_960_720.jpg);
+  background-size: cover;
+}
+#game_elements {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+#game_foreground {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background-image: url(https://t4.ftcdn.net/jpg/03/20/08/25/360_F_320082530_RPHlSpYdyKwoTyzpEJMz7uF5OSu5xfvE.jpg);
+  background-size: cover;
+}
+#game_ui {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+/* spil elementer */
+
+#carljohan_container1 {
+  width: 13%;
+  position: absolute;
+  top: 18%;
+  left: 37%;
+}
+
+#carljohan_sprite1 {
+  width: 100%;
+  height: 100%;
+}
+
+#carljohan_container2 {
+  width: 11%;
+  position: absolute;
+  top: 72%;
+  left: 73%;
+}
+
+#carljohan_sprite2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://cdn.pixabay.com/photo/2022/07/11/18/39/rat-7315760_1280.png);
+  background-size: cover;
+}
+
+#fluesvamp_container {
+  width: 17%;
+  position: absolute;
+  top: 44%;
+  left: 48%;
+}
+
+#fluesvamp_sprite {
+  width: 100%;
+  height: 100%;
+}
+
+#stinksvamp_container {
+  width: 20%;
+  position: absolute;
+  top: 18%;
+  left: 18%;
+}
+
+#stinksvamp_sprite {
+  width: 100%;
+  height: 100%;
+}
+
+/* ui-elementer */
+#time_board {
+  width: 5.6%;
+  position: absolute;
+  top: 66.5%;
+  left: 4%;
+}
+#score_board {
+  width: 23%;
+  position: absolute;
+  top: 69%;
+  left: 11%;
+}
+#energy_board {
+  width: 26%;
+  position: absolute;
+  top: 83%;
+  left: 3%;
+}
