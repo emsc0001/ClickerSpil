@@ -144,10 +144,10 @@ img {
 
 /* ui-elementer */
 #time_board {
-  width: 5.6%;
+  width: 6%;
   position: absolute;
-  top: 66.5%;
-  left: 4%;
+  top: 4%;
+  left: 3.5%;
 }
 #score_board {
   width: 23%;
@@ -156,8 +156,22 @@ img {
   left: 11%;
 }
 #health_board {
-  width: 26%;
+  width: 5%;
   position: absolute;
-  top: 83%;
-  left: 3%;
+  top: 3%;
+  left: 91%;
+}
+
+#health_board2 {
+  width: 5%;
+  position: absolute;
+  top: 3%;
+  left: 79%;
+}
+
+#health_board3 {
+  width: 5%;
+  position: absolute;
+  top: 3%;
+  left: 85%;
 }
