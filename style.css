@@ -111,6 +111,14 @@ img {
   z-index: 0;
 }
 
+#bird {
+  width: 45%;
+  position: absolute;
+  top: 31.3%;
+  left: 15.5%;
+  z-index: 0;
+}
+
 #background {
   width: 100%;
   height: 100%;
