@@ -24,9 +24,7 @@ img {
   position: absolute;
   top: 0%;
   left: 0%;
-  /* udkommenteret da der  ikke er et billede */
-  /* background-image: url(svg/start.svg);
-  background-size: cover; */
+ 
 }
 #game_over {
   width: 100%;
@@ -34,9 +32,7 @@ img {
   position: absolute;
   top: 0%;
   left: 0%;
-  /* udkommenteret da der  ikke er et billede */
-  /* background-image: url(svg/game_over.svg);
-  background-size: cover; */
+  
 }
 #level_complete {
   width: 100%;
@@ -44,9 +40,7 @@ img {
   position: absolute;
   top: 0%;
   left: 0%;
-  /* udkommenteret da der  ikke er et billede */
-  /* background-image: url(svg/level_complete.svg);
-  background-size: cover; */
+  
 }
 #game_background {
   background-image: url(cemetery-day-landscape_107791-342.avif);
@@ -102,7 +96,23 @@ img {
   position: absolute;
   top: 60%;
   left: -10%;
-  z-index: 10
+  z-index: 10;
+}
+
+#zombie4 {
+  width: 15%;
+  position: absolute;
+  top: -30%;
+  left: -12%;
+  z-index: 10;
+}
+
+#zombie5 {
+  width: 15%;
+  position: absolute;
+  top: -20%;
+  left: 30%;
+  z-index: 10;
 }
 
 #brain {
@@ -110,6 +120,14 @@ img {
   position: absolute;
   top: 46%;
   left: 76%;
+  z-index: 0;
+}
+
+#brain1 {
+  width: 15%;
+  position: absolute;
+  top: 55%;
+  left: 25%;
   z-index: 0;
 }
 
@@ -141,32 +159,56 @@ img {
 #time_board {
   width: 6%;
   position: absolute;
-  top: 4%;
-  left: 3.5%;
+  top: 1%;
+  left: 1%;
 }
-#score_board {
-  width: 23%;
-  position: absolute;
-  top: 69%;
-  left: 11%;
-}
-#health_board {
+
+#heart1 {
   width: 5%;
   position: absolute;
   top: 3%;
   left: 91%;
 }
 
-#health_board2 {
+#heart2 {
   width: 5%;
   position: absolute;
   top: 3%;
   left: 79%;
 }
 
-#health_board3 {
+#heart3 {
   width: 5%;
   position: absolute;
   top: 3%;
   left: 85%;
+}
+
+.broken_heart {
+  filter: grayscale(75%) blur(0.5px);
+}
+
+#timer {
+  font-size: 70px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 20px;
+  width: 9%;
+  position: absolute;
+  top: 3%;
+  left: 7.5%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Labrada', serif;
+  user-select: none;
+}
+
+img {
+  width: 100%;
 }

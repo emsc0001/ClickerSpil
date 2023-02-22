@@ -7,6 +7,8 @@
     <title>Clicker-Spil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animationer.css">
+    <link rel="stylesheet" href="gameover.css">
+    <link rel="stylesheet" href="gamecomplete.css">
 
   </head>
 
@@ -32,36 +34,55 @@
         <img id="zombie3_sprite" src="Hurt4.png" alt="zombie3">
         </div>
 
+        <div id="zombie4">
+        <img id="zombie4_sprite" src="png-transparent-plants-vs-zombie-plants-vs-zombies-2-it-s-about-time-rick-grimes-zombie-balloon-child-computer-wallpaper-vertebrate-removebg-preview.png" alt="zombie4">
+        </div>
+
+        <div id="zombie5">
+        <img id="zombie5_sprite" src="png-transparent-plants-vs-zombie-plants-vs-zombies-2-it-s-about-time-rick-grimes-zombie-balloon-child-computer-wallpaper-vertebrate-removebg-preview.png" alt="zombie5">
+        </div>
+
         <div id="bird">
         <img id="bird_sprite" src="hungry-chick-cartoon_1639-17315-removebg-preview (3).png" alt="bird">
+        </div>
+
+        <div id="brain1">
+        <img id="brain1_sprite" src="slipping-brain-mascot-illustration-character-design_309278-3529-removebg-preview (2).png" alt="brain1">
         </div>
 
         <div id="brain">
         <img src="cute-brain-holding-future-gun_152558-36140-removebg-preview.png" alt="brain">
         </div>
+
       </div>
 
-      <div id="game_foreground">
-        <img src="">
+      <div id="game_foreground"></div>
+      <div id="game_ui"></div>
+        <img id="time_board" src="400569.png" alt="timer"/>
       </div>
-      <div id="game_ui">
-        <img id="time_board" src="400569.png">
 
-        <img id="score_board" src="">
-        
-        <div id="health_board">
-        <img id="health1" src="901766.png" class="active_health" />
-        <img id="health2" src="901766.png" class="active_health" />
-        <img id="health3" src="901766.png" class="active_health" />
+        <div>
+        <img id="heart1" src="901766.png" class="active_heart" alt="heart1"/>
+        <img id="heart2" src="901766.png" class="active_heart" alt="heart2"/>
+        <img id="heart3" src="901766.png" class="active_heart" alt="heart3"/>
+      </div>
+
+
+  <div id="start"></div>
+   <div id="game_over">
+      <div id="game_over_window">
+        <div id="game_over_text">
+          <h1>You suck</h1>
+          You failed to defeat the zombies
+          <div id="zombies-killed-lose">KILLS</div>
         </div>
 
       </div>
     </div>
-    <div id="start"></div>
-    <div id="game_over"></div>
     <div id="level_complete"></div>
   </div>
     </div>
+    <div id="timer">00:30</div>
     
     <script src="script.js"></script>
   </body>
