@@ -1,12 +1,7 @@
-"use strict"
+"use strict";
 
 let points = 0;
 let lives = 3;
-
-window.addEventListener("load", start);
-console.log;
-("start");
-
 
 document.querySelector("#zombie1").classList.add("zombie1");
 document.querySelector("#zombie1").addEventListener("click", clickZombie1);
@@ -26,9 +21,11 @@ document.querySelector("#zombie5").addEventListener("click", clickZombie5);
 document.querySelector("#brain1").classList.add("brain1");
 document.querySelector("#brain1").addEventListener("click", clickbrain1);
 
+document.querySelector("#brain2").classList.add("brain2");
+document.querySelector("#brain2").addEventListener("click", clickbrain2);
+
 document.querySelector("#bird").classList.add("bird");
 document.querySelector("#bird").addEventListener("click", clickBird);
-
 
 function clickZombie1() {
   console.log("Click zombie");
@@ -42,7 +39,7 @@ function clickZombie1() {
   document.querySelector("#zombie1_sprite").classList.add("zoom_out");
 
   // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie1").addEventListener("animationend", zombieGone);
+  document.querySelector("#zombie1").addEventListener("animationend", zombiegone);
   increasePoint();
 }
 
@@ -58,7 +55,7 @@ function clickZombie2() {
   document.querySelector("#zombie2_sprite").classList.add("zoom_out");
 
   // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie2").addEventListener("animationend", zombieGone);
+  document.querySelector("#zombie2").addEventListener("animationend", zombiegone);
   increasePoint();
 }
 
@@ -74,7 +71,7 @@ function clickZombie3() {
   document.querySelector("#zombie3_sprite").classList.add("zoom_out");
 
   // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie3").addEventListener("animationend", zombieGone);
+  document.querySelector("#zombie3").addEventListener("animationend", zombiegone);
   decreaseLives();
   decreasePoint();
 }
@@ -91,7 +88,7 @@ function clickZombie4() {
   document.querySelector("#zombie4_sprite").classList.add("zoom_out");
 
   // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie4").addEventListener("animationend", zombieGone);
+  document.querySelector("#zombie4").addEventListener("animationend", zombiegone);
 }
 
 function clickZombie5() {
@@ -111,29 +108,28 @@ function clickZombie5() {
 
 function clickbrain1() {
   console.log("Click brain1");
-  // Forhindr gentagne clicks
   document.querySelector("#brain1").removeEventListener("click", brain1);
-
-  // Stop coin container
   document.querySelector("#brain1").classList.add("paused");
-
-  // sæt forsvind-animation på coin
   document.querySelector("#brain1_sprite").classList.add("zoom_out");
-
-  // når forsvind-animation er færdig: coinGone
-  document.querySelector("#brain1").addEventListener("animationend", brainGone);
+  document.querySelector("#brain1").addEventListener("animationend", braingone);
+  decreaseLives();
 }
 
-
+function clickbrain2() {
+  console.log("Click brain2");
+  document.querySelector("#brain2").removeEventListener("click", brain2);
+  document.querySelector("#brain2").classList.add("paused");
+  document.querySelector("#brain2_sprite").classList.add("zoom_out");
+decreaseLives();
+}
 
 function clickBird() {
   console.log("Click bird");
   document.querySelector("#bird").removeEventListener("click", clickBird);
   document.querySelector("#bird").classList.add("paused");
   document.querySelector("#bird_sprite").classList.add("zoom_out");
-  document.querySelector("#bird").addEventListener("animationend", birdGone);
+  //document.querySelector("#bird").addEventListener("animationend", birdgone);
   decreaseLives();
-  decreasePoint();
 }
 
 function increasePoint() {
@@ -142,14 +138,14 @@ function increasePoint() {
   displayPoints();
 }
 
-function decreasePoint() {
-  points--;
-  displayPoints();
-}
+// function decreasePoint() {
+//   points--;
+//   displayPoints();
+// }
 
-function displayPoints() {
-  document.querySelector("#points").textContent = points;
-}
+// function displayPoints() {
+//   document.querySelector("#points").textContent = points;
+// }
 
 function decreaseLives() {
   console.log("decreaseLives");
@@ -162,15 +158,8 @@ function displayDecreaseLives() {
   document.querySelector("#heart" + lives).classList.add("broken_heart");
 }
 
-function displayLives() {
-  document.querySelector("#heart" + lives).classList.remove("active_heart");
-  document.querySelector("#heart" + lives).classList.add("broken_heart");
-}
+const timer = document.getElementById("timer");
 
-// Get the timer element
-const timer = document.getElementById('timer');
-
-// Set the initial time
 let timeLeft = 30;
 
 // Create a function to update the timer
@@ -180,7 +169,7 @@ function updateTimer() {
   const seconds = timeLeft % 60;
 
   // Format the time string
-  const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  const timeString = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
   // Update the timer text
   timer.innerText = timeString;

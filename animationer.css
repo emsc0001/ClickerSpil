@@ -1,6 +1,6 @@
 .zombie1 {
   animation-name: zombie1;
-  animation-duration: 16s;
+  animation-duration: 10s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -16,7 +16,7 @@
 
 .zombie2 {
   animation-name: zombie2;
-  animation-duration: 30s;
+  animation-duration: 20s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -32,28 +32,35 @@
 
 .zombie3 {
   animation-name: zombie3;
-  animation-duration: 50s;
+  animation-duration: 35s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 .zombie4 {
   animation-name: zombie4;
-  animation-duration: 30s;
+  animation-duration: 20s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 .zombie5 {
   animation-name: zombie5;
-  animation-duration: 40s;
+  animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 .brain1 {
   animation-name: brain1;
-  animation-duration: 25s;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.brain2 {
+  animation-name: brain1;
+  animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
