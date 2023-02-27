@@ -1,7 +1,7 @@
 "use strict";
 
 let points = 0;
-let lives = 3;
+let lives = 0;
 
 document.querySelector("#zombie1").classList.add("zombie1");
 document.querySelector("#zombie1").addEventListener("click", clickZombie1);
