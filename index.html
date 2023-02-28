@@ -48,13 +48,10 @@
 
         <div id="brain1">
         <img id="brain1_sprite" src="billeder/slipping-brain-mascot-illustration-character-design_309278-3529-removebg-preview (2).png" alt="brain1">
-<<<<<<< Updated upstream
         </div>
 
         <div id="brain2">
         <img id="brain2_sprite" src="billeder/slipping-brain-mascot-illustration-character-design_309278-3529-removebg-preview (2).png" alt="brain2">
-=======
->>>>>>> Stashed changes
         </div>
 
         <div id="brain">
@@ -64,29 +61,33 @@
       </div>
 
       <div id="game_foreground"></div>
-      <div id="game_ui"></div>
+      <div id="game_ui">
+          <div id="score_board">
+            <span id="coin_count">0</span>
+            <img id="coin_image" src="billeder/Gold_coin_icon-removebg-preview.png" />
+          </div>
         <img id="time_board" src="billeder/400569.png" alt="timer"/>
       </div>
 
-<<<<<<< Updated upstream
         <section><div>
         <img id="heart1" src="billeder/901766.png" class="active_heart" alt="heart1"/>
         <img id="heart2" src="billeder/901766.png" class="active_heart" alt="heart2"/>
         <img id="heart3" src="billeder/901766.png" class="active_heart" alt="heart3"/>
       </section>
-=======
-        <div>
-        <img id="heart1" src="billeder/901766.png" class="active_heart" alt="heart1"/>
-        <img id="heart2" src="billeder/901766.png" class="active_heart" alt="heart2"/>
-        <img id="heart3" src="billeder/901766.png" class="active_heart" alt="heart3"/>
->>>>>>> Stashed changes
       </div>
-      s
+    
   
-    <div id="level_complete"></div>
-  </div>
+    <div id="start" class="hidden"></div>
+    <div id="game_over" class="hidden">
+        <h2>Game Over</h2>
     </div>
-    <div id="timer">00:60</div>
+    <div id="level_complete" class="hidden">
+        <h2>Level Complete</h2>
+    </div>
+    </div>
+    <div id="timer">00:60
+
+    </div>
     
     <script src="script.js"></script>
   </body>
