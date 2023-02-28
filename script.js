@@ -42,9 +42,6 @@ function clickZombie1() {
 
   // sæt forsvind-animation på coin
   document.querySelector("#zombie1_sprite").classList.add("zoom_out");
-
-  // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie1").addEventListener("animationend", zombiegone);
   incrementPoints();
 }
 
@@ -59,24 +56,14 @@ function clickZombie2() {
   // sæt forsvind-animation på coin
   document.querySelector("#zombie2_sprite").classList.add("zoom_out");
 
-  // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie2").addEventListener("animationend", zombiegone);
   incrementPoints();
 }
 
 function clickZombie3() {
   console.log("Click zombie");
-  // Forhindr gentagne clicks
   document.querySelector("#zombie3").removeEventListener("click", clickZombie3);
-
-  // Stop coin container
   document.querySelector("#zombie3").classList.add("paused");
-
-  // sæt forsvind-animation på coin
   document.querySelector("#zombie3_sprite").classList.add("zoom_out");
-
-  // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie3").addEventListener("animationend", zombiegone);
   incrementPoints();
 }
 
@@ -91,8 +78,7 @@ function clickZombie4() {
   // sæt forsvind-animation på coin
   document.querySelector("#zombie4_sprite").classList.add("zoom_out");
 
-  // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie4").addEventListener("animationend", zombiegone);
+
   incrementPoints();
 }
 
@@ -107,8 +93,7 @@ function clickZombie5() {
   // sæt forsvind-animation på coin
   document.querySelector("#zombie5_sprite").classList.add("zoom_out");
 
-  // når forsvind-animation er færdig: coinGone
-  document.querySelector("#zombie5").addEventListener("animationend", zombieGone);
+
   incrementPoints();
 }
 
@@ -138,13 +123,12 @@ function clickBird() {
 
 function incrementPoints() {
   console.log("Giv point");
-  points++;
-  console.log("har nu " + points + " point");
+  points = points + 1;
   displayPoints();
-  if (points >= 5) {
-    levelcomplete();
+  //if (points >= 5) {
+   // levelcomplete();
   }
-}
+
 
 function displayPoints() {
   console.log("vis point");
@@ -152,17 +136,23 @@ function displayPoints() {
 }
 
 function decrementLives() {
-  console.log("mist et liv");
+    lives--;
+    console.log("mist et liv");
   showDecrementedLives();
-  lives--;
-  if (lives <= 0) {
-    gameover();
+
+  //if (lives <= 0) {
+    //gameover();
   }
-}
+
 
 function showDecrementedLives() {
-  document.querySelector("#heart" + lives).classList.remove("active_heart");
+  document.querySelector("#heart" + (lives + 1)).classList.add("broken_heart");
+  document.querySelector("#heart" + (lives + 1)).classList.remove("active_heart");
+}
+
+function showIncrementedLives() {
   document.querySelector("#heart" + lives).classList.add("broken_heart");
+  document.querySelector("#heart" + lives).classList.remove("active_heart");
 }
 
 function gameover() {
