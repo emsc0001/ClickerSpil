@@ -7,18 +7,16 @@
     <title>Clicker-Spil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animationer.css">
-    <link rel="stylesheet" href="gameover.css">
-    <link rel="stylesheet" href="gamecomplete.css">
 
   </head>
 
   <body>
 
     <div id="screen">
-    <div id="game">
-      <div id="game_background"></div>
-      <div id="game_elements">
-        <div id="">
+      <div id="game">
+        <div id="game_background"></div>
+        <div id="game_elements">
+        <div id="game_background">
           <img src="billeder/cemetery-day-landscape_107791-342.avif" alt="">
         </div>
 
@@ -60,7 +58,10 @@
 
       </div>
 
-      <div id="game_foreground"></div>
+      <!-- <div id="game_foreground">
+        <img src="billeder/5_4-removebg-preview.png" alt="grass">
+      </div> -->
+
       <div id="game_ui">
           <div id="score_board">
             <span id="coin_count">0</span>
@@ -73,11 +74,15 @@
         <img id="heart1" src="billeder/901766.png" class="active_heart" alt="heart"/>
         <img id="heart2" src="billeder/901766.png" class="active_heart" alt="heart"/>
         <img id="heart3" src="billeder/901766.png" class="active_heart" alt="heart"/>
-      </section>
-      </div>
+      </section></div>
     
   
-    <div id="start" class="hidden"></div>
+      <div id="start">
+        <h2>Zombies vs Brains</h2>
+        <p>Shoot the zombies and save the smart brains</p>
+        <button id="btn_start" class="pulse">Start</button>
+        </div>
+
     <div id="game_over" class="hidden">
         <h2>Game Over</h2>
     </div>
@@ -85,10 +90,16 @@
         <h2>Level Complete</h2>
     </div>
     </div>
-    <div id="timer">00:60
-
-    </div>
     
+    <div class="timer">
+      <div class="time-left">60</div>
+    </div>
+
+    <audio id="soundDream" src="lyde/dreams.mp3"></audio>
+    <audio id="soundMonster" src="lyde/monster-death-grunt-131480.mp3"></audio>
+    <audio id="soundFugl" src="lyde/eagle-cry-7095.mp3"></audio>
+
     <script src="script.js"></script>
+
   </body>
 </html>
