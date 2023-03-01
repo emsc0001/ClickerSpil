@@ -13,10 +13,10 @@
   <body>
 
     <div id="screen">
-    <div id="game">
-      <div id="game_background"></div>
-      <div id="game_elements">
-        <div id="">
+      <div id="game">
+        <div id="game_background"></div>
+        <div id="game_elements">
+        <div id="game_background">
           <img src="billeder/cemetery-day-landscape_107791-342.avif" alt="">
         </div>
 
@@ -78,7 +78,12 @@
       </div>
     h
   
-    <div id="start" class="hidden"></div>
+      <div id="start">
+        <h2>Zombies vs Brains</h2>
+        <p>Shoot the zombies and save the smart brains</p>
+        <button id="btn_start" class="pulse">Start</button>
+        </div>
+
     <div id="game_over" class="hidden">
         <h2>Game Over</h2>
     </div>
@@ -93,6 +98,9 @@
 
     <audio id="dream" src="lyde/dreams.mp3"</audio>
     <audio id="monster" src="lyde/monster-death-grunt-131480.mp3"</audio>
+    <audio id="soundDream" src="lyde/dreams.mp3"></audio>
+    <audio id="soundMonster" src="lyde/monster-death-grunt-131480.mp3"></audio>
+    <audio id="soundFugl" src="lyde/eagle-cry-7095.mp3"></audio>
 
     <script src="script.js"></script>
 

@@ -1,5 +1,4 @@
 "use strict";
-window.addEventListener("load", start);
 
 let points = 0;
 let lives = 3;
@@ -61,15 +60,26 @@ function clickZombie2() {
   // sæt forsvind-animation på coin
   document.querySelector("#zombie2_sprite").classList.add("zoom_out");
 
-  incrementPoints();
+  // når forsvind-animation er færdig: coinGone
+  document.querySelector("#zombie2").addEventListener("animationend", zombiegone);
+  increasePoint();
 }
 
 function clickZombie3() {
   console.log("Click zombie");
+  // Forhindr gentagne clicks
   document.querySelector("#zombie3").removeEventListener("click", clickZombie3);
+
+  // Stop coin container
   document.querySelector("#zombie3").classList.add("paused");
+
+  // sæt forsvind-animation på coin
   document.querySelector("#zombie3_sprite").classList.add("zoom_out");
-  incrementPoints();
+
+  // når forsvind-animation er færdig: coinGone
+  document.querySelector("#zombie3").addEventListener("animationend", zombiegone);
+  decreaseLives();
+  decreasePoint();
 }
 
 function clickZombie4() {
@@ -83,8 +93,8 @@ function clickZombie4() {
   // sæt forsvind-animation på coin
   document.querySelector("#zombie4_sprite").classList.add("zoom_out");
 
-
-  incrementPoints();
+  // når forsvind-animation er færdig: coinGone
+  document.querySelector("#zombie4").addEventListener("animationend", zombiegone);
 }
 
 function clickZombie5() {
@@ -98,8 +108,8 @@ function clickZombie5() {
   // sæt forsvind-animation på coin
   document.querySelector("#zombie5_sprite").classList.add("zoom_out");
 
-
-  incrementPoints();
+  // når forsvind-animation er færdig: coinGone
+  document.querySelector("#zombie5").addEventListener("animationend", zombieGone);
 }
 
 function clickbrain1() {
@@ -107,7 +117,7 @@ function clickbrain1() {
   document.querySelector("#brain1").removeEventListener("click", brain1);
   document.querySelector("#brain1").classList.add("paused");
   document.querySelector("#brain1_sprite").classList.add("zoom_out");
-  decrementLives();
+  decreaseLives();
 }
 
 function clickbrain2() {
@@ -115,7 +125,8 @@ function clickbrain2() {
   document.querySelector("#brain2").removeEventListener("click", brain2);
   document.querySelector("#brain2").classList.add("paused");
   document.querySelector("#brain2_sprite").classList.add("zoom_out");
-  decrementLives();
+  
+  decreaseLives();
 }
 
 function clickBird() {
@@ -123,30 +134,31 @@ function clickBird() {
   document.querySelector("#bird").removeEventListener("click", clickBird);
   document.querySelector("#bird").classList.add("paused");
   document.querySelector("#bird_sprite").classList.add("zoom_out");
-  decrementLives();
+  //document.querySelector("#bird").addEventListener("animationend", birdgone);
+  decreaseLives();
 }
 
 function incrementPoints() {
-  console.log("Giv point");
-  points = points + 1;
+  console.log("increase point virker");
+  points++;
   displayPoints();
-  //if (points >= 5) {
-   // levelcomplete();
+  if (points >= 5) {levelcomplete()
   }
-
-
-function displayPoints() {
-  console.log("vis point");
-  document.querySelector("#coin_count").textContent = points;
 }
 
-function decrementLives() {
-    lives--;
-    console.log("mist et liv");
-  showDecrementedLives();
+function decreasePoint() {
+points--;displayPoints();
+}
 
-  //if (lives <= 0) {
-    //gameover();
+function displayPoints() {
+document.querySelector("#points").textContent = points;
+}
+
+function decreaseLives() {
+  console.log("decreaseLives");
+  displayDecreaseLives();
+  lives--;
+  if (lives <= 0) {gameover();
   }
 
 
@@ -156,13 +168,35 @@ function showDecrementedLives() {
   document.querySelector("#heart" + (lives + 1)).classList.remove("active_heart");
 }
 
-function showIncrementedLives() {
-  document.querySelector("#heart" + lives).classList.add("broken_heart");
+function displayDecreaseLives() {
   document.querySelector("#heart" + lives).classList.remove("active_heart");
+  document.querySelector("#heart" + lives).classList.add("broken_heart");
 }
 
-function gameover() {
-  document.querySelector("#game_over").classList.remove("hidden");
+const timer = document.getElementById("timer");
+
+let timeLeft = 30;
+
+// Create a function to update the timer
+function updateTimer() {
+  // Calculate the minutes and seconds
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
+  // Format the time string
+  const timeString = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+  // Update the timer text
+  timer.innerText = timeString;
+
+  // Decrement the time
+  timeLeft--;
+
+  // Check if the time has run out
+  if (timeLeft === -1) {
+    // Stop the timer
+    clearInterval(timerInterval);
+  }
 }
 
 function levelcomplete() {
@@ -188,4 +222,4 @@ if (countdown === 0) {
 }
 }, 1000);
 
-sdaojda
+
