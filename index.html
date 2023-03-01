@@ -7,8 +7,6 @@
     <title>Clicker-Spil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animationer.css">
-    <link rel="stylesheet" href="gameover.css">
-    <link rel="stylesheet" href="gamecomplete.css">
 
   </head>
 
@@ -60,7 +58,10 @@
 
       </div>
 
-      <div id="game_foreground"></div>
+      <!-- <div id="game_foreground">
+        <img src="billeder/5_4-removebg-preview.png" alt="grass">
+      </div> -->
+
       <div id="game_ui">
           <div id="score_board">
             <span id="coin_count">0</span>
@@ -85,10 +86,15 @@
         <h2>Level Complete</h2>
     </div>
     </div>
-    <div id="timer">00:60
-
-    </div>
     
+    <div class="timer">
+      <div class="time-left">60</div>
+    </div>
+
+    <audio id="dream" src="lyde/dreams.mp3"</audio>
+    <audio id="monster" src="lyde/monster-death-grunt-131480.mp3"</audio>
+
     <script src="script.js"></script>
+
   </body>
 </html>

@@ -6,6 +6,8 @@ let lives = 3;
 
 function start() {
   console.log("JavaScript kører!");
+
+  document.querySelector("#sound_dreams").play();
 }
 
 document.querySelector("#zombie1").classList.add("zombie1");
@@ -43,6 +45,9 @@ function clickZombie1() {
   // sæt forsvind-animation på coin
   document.querySelector("#zombie1_sprite").classList.add("zoom_out");
   incrementPoints();
+
+  document.querySelector("#sound_monster").currentTime = 0;
+  document.querySelector("#sound_monster").play();
 }
 
 function clickZombie2() {
@@ -145,6 +150,7 @@ function decrementLives() {
   }
 
 
+
 function showDecrementedLives() {
   document.querySelector("#heart" + (lives + 1)).classList.add("broken_heart");
   document.querySelector("#heart" + (lives + 1)).classList.remove("active_heart");
@@ -162,3 +168,22 @@ function gameover() {
 function levelcomplete() {
   document.querySelector("#level_complete").classList.remove("hidden");
 }
+
+const timeLeft = document.querySelector(".time-left");
+
+let countdown = 60
+const timer = setInterval(() => {
+countdown--;
+
+
+if (countdown < 10) {
+timeLeft.innerHTML = `0${countdown}`;
+} else {
+  timeLeft.innerHTML = countdown;
+}
+
+if (countdown === 0) {
+  clearInterval(timer);
+  levelcomplete()
+}
+}, 1000);
