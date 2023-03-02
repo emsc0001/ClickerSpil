@@ -1,39 +1,62 @@
 "use strict";
+window.addEventListener("load", ready);
+
+
 
 let points = 0;
-let lives = 3;
+let lives = 0;
 
-function start() {
-  console.log("JavaScript kører!");
-
-  document.querySelector("#sound_dreams").play();
+function ready() {
+  console.log("JavaScript ready!");
+  document.querySelector("#btn_start").addEventListener("click", startGame);
 }
 
+function startGame() {
+  // nulstil point og liv
+  points = 0;
+  lives = 3;
 
+  // skjul startskærm
+  document.querySelector("#start").classList.add("hidden");
 
-document.querySelector("#zombie1").classList.add("zombie1");
-document.querySelector("#zombie1").addEventListener("click", clickZombie1);
+  startAllAnimations();
 
-document.querySelector("#zombie2").classList.add("zombie2");
-document.querySelector("#zombie2").addEventListener("click", clickZombie2);
+  document.querySelector("#zombie1").classList.add("zombie1");
+  document.querySelector("#zombie1").addEventListener("click", clickZombie1);
 
-document.querySelector("#zombie3").classList.add("zombie3");
-document.querySelector("#zombie3").addEventListener("click", clickZombie3);
+  document.querySelector("#zombie2").classList.add("zombie2");
+  document.querySelector("#zombie2").addEventListener("click", clickZombie2);
 
-document.querySelector("#zombie4").classList.add("zombie4");
-document.querySelector("#zombie4").addEventListener("click", clickZombie4);
+  document.querySelector("#zombie3").classList.add("zombie3");
+  document.querySelector("#zombie3").addEventListener("click", clickZombie3);
 
-document.querySelector("#zombie5").classList.add("zombie5");
-document.querySelector("#zombie5").addEventListener("click", clickZombie5);
+  document.querySelector("#zombie4").classList.add("zombie4");
+  document.querySelector("#zombie4").addEventListener("click", clickZombie4);
 
-document.querySelector("#brain1").classList.add("brain1");
-document.querySelector("#brain1").addEventListener("click", clickbrain1);
+  document.querySelector("#zombie5").classList.add("zombie5");
+  document.querySelector("#zombie5").addEventListener("click", clickZombie5);
 
-document.querySelector("#brain2").classList.add("brain2");
-document.querySelector("#brain2").addEventListener("click", clickbrain2);
+  document.querySelector("#brain1").classList.add("brain1");
+  document.querySelector("#brain1").addEventListener("click", clickbrain1);
 
-document.querySelector("#bird").classList.add("bird");
-document.querySelector("#bird").addEventListener("click", clickBird);
+  document.querySelector("#brain2").classList.add("brain2");
+  document.querySelector("#brain2").addEventListener("click", clickbrain2);
+
+  document.querySelector("#bird").classList.add("bird");
+  document.querySelector("#bird").addEventListener("click", clickBird);
+
+  document.querySelector("#soundStart").currentTime = 0;
+  document.querySelector("#soundStart").play();
+}
+
+function startAllAnimations() {
+  // Start falling animationer
+  document.querySelector("#zombie1").classList.add("zombie1");
+  document.querySelector("#zombie2").classList.add("zombie2");
+  document.querySelector("#zombie3").classList.add("zombie3");
+  document.querySelector("#zombie4").classList.add("zombie4");
+  document.querySelector("#zombie5").classList.add("zombie5");
+}
 
 function clickZombie1() {
   console.log("Click zombie");
@@ -53,7 +76,6 @@ function clickZombie2() {
   document.querySelector("#soundMonster").currentTime = 0;
   document.querySelector("#soundMonster").play();
   incrementPoints();
-  
 }
 
 function clickZombie3() {
@@ -65,7 +87,6 @@ function clickZombie3() {
   document.querySelector("#soundMonster").play();
   incrementPoints();
 }
-
 
 function clickZombie4() {
   console.log("Click zombie");
@@ -115,13 +136,13 @@ function clickBird() {
 
 function incrementPoints() {
   console.log("Giv point");
-  points = points + 1;
+  points++;
   displayPoints();
+
   if (points >= 5) {
-   levelcomplete();
+    levelcomplete();
   }
 }
-
 
 function displayPoints() {
   console.log("vis point");
@@ -129,59 +150,55 @@ function displayPoints() {
 }
 
 function decrementLives() {
-    lives--;
-    console.log("mist et liv");
+  lives--;
+  console.log("mist et liv");
   showDecrementedLives();
 
   if (lives <= 0) {
-    gameover();
+    gameOver();
   }
 
+  function showDecrementedLives() {
+    document.querySelector("#heart" + (lives + 1)).classList.add("broken_heart");
+    document.querySelector("#heart" + (lives + 1)).classList.remove("active_heart");
+  }
 
+  function showIncrementedLives() {
+    document.querySelector("#heart" + lives).classList.add("broken_heart");
+    document.querySelector("#heart" + lives).classList.remove("active_heart");
+  }
 
-function showDecrementedLives() {
-  document.querySelector("#heart" + (lives + 1)).classList.add("broken_heart");
-  document.querySelector("#heart" + (lives + 1)).classList.remove("active_heart");
-}
+  function gameOver() {
+    console.log("Game Over");
+    document.querySelector("#game_over").classList.remove("hidden");
+    stopGame();
+  }
 
-function showIncrementedLives() {
-  document.querySelector("#heart" + lives).classList.add("broken_heart");
-  document.querySelector("#heart" + lives).classList.remove("active_heart");
-}
+  function level_complete() {
+    document.querySelector("#level_complete").classList.remove("hidden");
+  
+  }
 
-function gameOver() {
-  console.log("Game Over");
-  document.querySelector("#game_over").classList.remove("hidden");
-  stopGame();
-}
+  //TIMER
+  const timer = document.getElementById("timer");
 
-
-
-
-
-//TIMER
-const timer = document.getElementById("timer");
-
-let timeLeft = 30;
+  let timeLeft = 30;
 }
 
 const timeLeft = document.querySelector(".time-left");
 
-let countdown = 60
+let countdown = 60;
 const timer = setInterval(() => {
-countdown--;
+  countdown--;
 
+  if (countdown < 10) {
+    timeLeft.innerHTML = `0${countdown}`;
+  } else {
+    timeLeft.innerHTML = countdown;
+  }
 
-if (countdown < 10) {
-timeLeft.innerHTML = `0${countdown}`;
-} else {
-  timeLeft.innerHTML = countdown;
-}
-
-if (countdown === 0) {
-  clearInterval(timer);
-  levelcomplete()
-}
+  if (countdown === 0) {
+    clearInterval(timer);
+    levelcomplete();
+  }
 }, 1000);
-
-

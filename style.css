@@ -6,26 +6,77 @@ img {
   width: 100%;
 }
 
+h2 {
+  font-size: 4em;
+  margin: 0;
+}
+
+p {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 1em 0 1.5em;
+}
+
 #screen {
-  position: relative;
-  width: 100%;
+  display: grid;
+  grid-template: 100% / 100%;
   aspect-ratio: 16/9;
 }
 
-#game_background {
-  background-image: url(billeder/cemetery-day-landscape_107791-342.avif);
-  background-size: cover;
+#game {
+  grid-template: 100% / 100%;
+  display: grid;
   grid-area: 1 / 1;
-  margin: 0;
+  overflow: hidden;
 }
+
+#game_background {
+  background-image: green;
+  grid-area: 1 / 1;
+  background-size: cover;
+}
+
 #game_elements {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
+  grid-area: 1 /1;
+  overflow: hidden;
+  position: relative;
 }
-#game_foreground {
+
+#level_complete {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  color: #ffffff;
+  background-image: url(billeder/Udklip-removebg-preview.png);
+  background-size: cover;
+  aspect-ratio: 16 / 9;
+}
+
+#start {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  color: #ffffff;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+}
+
+#game_over {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  color: #000000;
+  background-image: url(billeder/UdklipsaSA-removebg-preview.png);
+  background-size: cover;
+}
+
+/* #game_foreground {
   width: 89%;
   height: 100%;
   position: absolute;
@@ -35,14 +86,7 @@ img {
   background-size: cover;
   margin: 0;
   z-index: 900;
-}
-#game_ui {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-}
+} */
 
 #zombie1 {
   width: 7%;
@@ -116,20 +160,6 @@ img {
   z-index: 10;
 }
 
-#background {
-  width: 100%;
-  height: 100%;
-  background-image: url(billeder/cemetery-day-landscape_107791-342.avif);
-  background-size: cover;
-}
-
-#time_board {
-  width: 6%;
-  position: absolute;
-  top: 1%;
-  left: 1%;
-}
-
 #heart1 {
   width: 5%;
   position: absolute;
@@ -162,84 +192,60 @@ img {
   filter: grayscale(75%) blur(0.5px);
 }
 
-.timer {
-  font-size: 70px;
-  font-weight: bold;
-  color: #177a2c;
-  background-color: #c90303;
-
-  /* background-image: url(billeder/901766.png);
-  background-size: 70%; */
-  background-position: center;
-  padding: 5px;
-  border-radius: 20px;
-  width: 15%;
+/* #game_ui {
   position: absolute;
-  top: 3%;
-  left: 7.5%;
-}
-
-body {
-  margin: 0;
-  overflow: hidden;
-  text-align: center;
-  font-family: "Labrada", serif;
-  user-select: none;
-}
-
-img {
-  width: 100%;
-}
+  top: 1vw;
+  right: 80vw;
+  color: rgb(0, 0, 0);
+  font-size: 3em;
+  pointer-events: none;
+} */
 
 #game_ui {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-rows: 220px; */
+  grid-template-rows: 60px;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: 2vw;
-  right: 1vw;
-  color: white;
-
-  font-size: 3em;
-
-  pointer-events: none;
+  top: 5%;
+  left: -9%;
 }
 
-#coin_count {
-  white-space: nowrap;
-  text-align: right;
+#score_board,
+#timer {
+  font-size: 75px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Pixel Takhisis";
+  color: #000000;
 }
 
 #coin_image {
-  width: 1.2em;
+  width: 15%;
 }
 
-#score_board {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 0.1em;
+#time_board {
+  display: flex;
+  width: 20%;
+  top: 40%;
 }
 
-#game_over {
-  grid-area: 1 /1;
-  z-index: 999;
+#coin_count {
   display: grid;
-  justify-content: center;
-  align-content: center;
-  background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
-  color: #ffffff;
-}
-
-#level_complete {
-  grid-area: 1 /1;
-  z-index: 999;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
-  color: #ffffff;
+  right: 50px;
+  top: 10%;
+  color: #000000;
 }
 
 .hidden,
 #game_over.hidden,
-#level_complete.hidden {
+#level_complete.hidden,
+#game.hidden,
+#start.hidden {
   display: none;
 }
 
@@ -253,4 +259,3 @@ button {
   cursor: pointer;
   border-radius: 10px;
 }
-
