@@ -12,14 +12,16 @@ function ready() {
 }
 
 function startGame() {
-  // nulstil point og liv
+ 
   points = 0;
   lives = 3;
 
-  // skjul startskærm
+
   document.querySelector("#start").classList.add("hidden");
 
   startAllAnimations();
+
+
 
   document.querySelector("#zombie1").classList.add("zombie1");
   document.querySelector("#zombie1").addEventListener("click", clickZombie1);
@@ -47,16 +49,21 @@ function startGame() {
 
   document.querySelector("#soundStart").currentTime = 0;
   document.querySelector("#soundStart").play();
+
+  document.querySelector("#zombie1").addEventListener("animationiteration", zombieRestart);
+  document.querySelector("#zombie2").addEventListener("animationiteration", zombieRestart);
+  document.querySelector("#zombie3").addEventListener("animationiteration", zombieRestart);
 }
 
 function startAllAnimations() {
-  // Start falling animationer
   document.querySelector("#zombie1").classList.add("zombie1");
   document.querySelector("#zombie2").classList.add("zombie2");
   document.querySelector("#zombie3").classList.add("zombie3");
   document.querySelector("#zombie4").classList.add("zombie4");
   document.querySelector("#zombie5").classList.add("zombie5");
 }
+
+
 
 function clickZombie1() {
   console.log("Click zombie");
@@ -134,12 +141,46 @@ function clickBird() {
   decrementLives();
 }
 
+function zombieGone() {
+  
+  const zombie = this; 
+ 
+  zombie.removeEventListener("animationend", zombieGone);
+
+
+  zombie.querySelector("img").classList.remove("zoom_out");
+
+
+  zombie.classList.remove("paused");
+
+  zombieRestart.call(this);
+
+  zombie.addEventListener("click", clickZombie);
+}
+
+function zombieRestart() {
+ 
+  const zombie = this;
+
+
+  zombie.classList.remove("zombie1");
+  zombie.offsetWidth;
+  zombie.classList.add("zombie1");
+
+  
+  zombie.classList.remove("position1", "position2", "position3", "position4", "position5");
+
+ 
+  const p = Math.ceil(Math.random() * 5);
+  zombie.classList.add(`position${p}`);
+}
+
 function incrementPoints() {
   console.log("Giv point");
   points++;
   displayPoints();
 
-  if (points >= 5) {
+  if (points >= 4) {
     levelcomplete();
   }
 }

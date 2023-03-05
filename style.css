@@ -184,6 +184,26 @@ p {
   z-index: 10;
 }
 
+.position1 {
+  left: 10vw;
+}
+
+.position2 {
+  left: 40vw;
+}
+
+.position3 {
+  left: 70vw;
+}
+
+.position4 {
+  left: 30vw;
+}
+
+.position5 {
+  left: 55vw;
+}
+
 .active_heart {
   filter: drop-shadow(px green);
 }
