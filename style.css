@@ -42,7 +42,8 @@ p {
   position: relative;
 }
 
-#level_complete {
+#level_complete,
+#start {
   grid-area: 1 /1;
   z-index: 999;
   display: grid;
@@ -50,9 +51,6 @@ p {
   align-content: center;
   background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
   color: #ffffff;
-  background-image: url(billeder/Udklip-removebg-preview.png);
-  background-size: cover;
-  aspect-ratio: 16 / 9;
 }
 
 #start {
@@ -62,7 +60,8 @@ p {
   justify-content: center;
   align-content: center;
   color: #ffffff;
-  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  background-image: url(billeder/zombie-apocalypse_1048-8858.avif);
+  background-size: cover;
 }
 
 #game_over {
@@ -75,18 +74,6 @@ p {
   background-image: url(billeder/UdklipsaSA-removebg-preview.png);
   background-size: cover;
 }
-
-/* #game_foreground {
-  width: 89%;
-  height: 100%;
-  position: absolute;
-  top: 30%;
-  left: 0%;
-  background-image: url();
-  background-size: cover;
-  margin: 0;
-  z-index: 900;
-} */
 
 #zombie1 {
   width: 7%;
@@ -140,7 +127,7 @@ p {
   width: 15%;
   position: absolute;
   top: 55%;
-  left: 25%;
+  left: 0%;
   z-index: 10;
 }
 
@@ -148,7 +135,7 @@ p {
   width: 15%;
   position: absolute;
   top: 55%;
-  left: 40%;
+  left: -10%;
   z-index: 10;
 }
 
@@ -185,23 +172,23 @@ p {
 }
 
 .position1 {
-  left: 10vw;
+  left: -80vw;
 }
 
 .position2 {
-  left: 40vw;
+  left: -70vw;
 }
 
 .position3 {
-  left: 70vw;
+  left: -70vw;
 }
 
 .position4 {
-  left: 30vw;
+  left: -60vw;
 }
 
 .position5 {
-  left: 55vw;
+  left: -20vw;
 }
 
 .active_heart {
@@ -224,7 +211,6 @@ p {
 #game_ui {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  /* grid-template-rows: 220px; */
   grid-template-rows: 60px;
   width: 100%;
   height: 100%;
@@ -273,9 +259,9 @@ button {
   padding: 0.5em 1em;
   font-size: 2em;
   margin: auto;
-  background-color: #ffad01;
-  color: #fff4bf;
-  border: 10px solid #ffc72e;
+  background-color: #00ff55;
+  color: #ffffff;
+  border: 10px solid #022397;
   cursor: pointer;
   border-radius: 10px;
 }
