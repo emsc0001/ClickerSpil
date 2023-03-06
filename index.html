@@ -7,7 +7,7 @@
     <title>Clicker-Spil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animationer.css">
-    <link rel="icon" type>
+    <link rel="icon" href="billeder/213266.png">
 
   </head>
 
@@ -58,11 +58,7 @@
 
         </div>
 
-      <!-- <div id="game_foreground">
-        <img src="billeder/5_4-removebg-preview.png" alt="grass">
-      </div> -->
-
-      <div id="game_ui">
+            <div id="game_ui">
         <div id="score_board">
           <img id="coin_image" src="billeder/Gold_coin_icon-removebg-preview.png" />
           <span id="coin_count">0</span>
@@ -85,18 +81,19 @@
     <div id="start">
         <h2>Zombies vs Brains</h2>
         <p>Shoot the zombies and save the smart brains </p>
-        <p> Kill 15 zombies to win the game</p>
+        <p> Gain 15 points to win the game</p>
         <button id="btn_start" class="pulse">Start</button>
     </div>
 
     <div id="game_over" class="hidden">
         <h2>Game Over</h2>
+        <p>The zombies overtook you and you have been eaten.</p>
         <button id="btn_restart" class="pulse">restart</button>
-        <p>Du er hermed erklæret udslettet</p>
     </div>
     <div id="level_complete" class="hidden">
         <h2>Level Complete</h2>
-        <button id="btn_restart" class="pulse">Play again</button>
+        <p>Congratulations. You succesfully killed all zombies!</p>
+        <button id="btn_go_to_start" class="pulse">Play again</button>
     </div>
 
     <audio id="soundDream" src="lyde/dreams.mp3"></audio>
@@ -105,7 +102,8 @@
     <audio id="soundStart" src="lyde/brains-brains-101087.mp3"></audio>
     <audio id="soundBrain" src="lyde/breeze-of-blood-122253.mp3"></audio>
     <audio id="soundBG" src="lyde/scary-spooky-creepy-horror-ambient-dark-piano-cinematic-115052.mp3"></audio>
-
+    <audio id="soundWin" src="lyde/yoohoo-40748.mp3"></audio>
+    <audio id="soundLose" src="lyde/boo-and-laugh-7060.mp3"></audio>
 
 
     <script src="script.js"></script>

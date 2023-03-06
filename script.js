@@ -2,6 +2,9 @@
 window.addEventListener("load", ready);
 
 document.body.style.overflow = "hidden";
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+
 
 let points = 0;
 let lives = 0;
@@ -9,6 +12,7 @@ let lives = 0;
 function ready() {
   console.log("JavaScript ready!");
   document.querySelector("#btn_start").addEventListener("click", startGame);
+  document.querySelector("#btn_restart").addEventListener("click", levelcomplete);
 }
 
 function startGame() {
@@ -18,6 +22,9 @@ function startGame() {
   document.querySelector("#start").classList.add("hidden");
 
   startAllAnimations();
+  resetLives();
+  resetPoints();
+  // startTimer();
 
   document.querySelector("#zombie1").classList.add("zombie1");
   document.querySelector("#zombie1").addEventListener("click", clickZombie1);
@@ -50,7 +57,28 @@ function startGame() {
   document.querySelector("#zombie2").addEventListener("animationiteration", zombieRestart);
   document.querySelector("#zombie3").addEventListener("animationiteration", zombieRestart);
 
-  document.querySelector("#soundBG").play();
+  var soundBG = document.querySelector("#soundBG");
+  soundBG.volume = 0.2;
+  soundBG.play();
+
+  function resetLives() {
+    // sæt lives til 3
+    lives = 3;
+    //nulstil visning af liv (hjerte vi ser)
+    document.querySelector("#heart1").classList.remove("broken_heart");
+    document.querySelector("#heart2").classList.remove("broken_heart");
+    document.querySelector("#heart3").classList.remove("broken_heart");
+    document.querySelector("#heart1").classList.add("active_heart");
+    document.querySelector("#heart2").classList.add("active_heart");
+    document.querySelector("#heart3").classList.add("active_heart");
+}
+
+function resetPoints() {
+    // nulstil point
+    points = 0;
+    // nulstil vising af point
+    displayPoints();
+}
 }
 
 function startAllAnimations() {
@@ -60,6 +88,7 @@ function startAllAnimations() {
   document.querySelector("#zombie4").classList.add("zombie4");
   document.querySelector("#zombie5").classList.add("zombie5");
 }
+
 
 function clickZombie1() {
   console.log("Click zombie");
@@ -187,7 +216,7 @@ function incrementPoints() {
   displayPoints();
 
   if (points >= 15) {
-    levelcomplete();
+    levelComplete();
   }
 }
 
@@ -196,9 +225,12 @@ function displayPoints() {
   document.querySelector("#coin_count").textContent = points;
 }
 
-function levelcomplete() {
+function levelComplete() {
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
   document.querySelector("#level_complete").classList.remove("hidden");
-  stop();
+  document.querySelector("#soundWin").currentTime = 0;
+  document.querySelector("#soundWin").play();
+  stopGame();
 }
 
 function decrementLives() {
@@ -217,9 +249,21 @@ function decrementLives() {
 
   function gameOver() {
     console.log("Game Over");
+    document.querySelector("#btn_restart").addEventListener("click", startGame);
     document.querySelector("#game_over").classList.remove("hidden");
+    document.querySelector("#soundLose").currentTime = 0;
+    document.querySelector("#soundLose").play();
     stopGame();
   }
+
+  document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
+ 
+
+  function showStartScreen() {
+    document.querySelector("#start").classList.remove("hidden");
+    document.querySelector("#game_over").classList.add("hidden");
+    document.querySelector("#level_complete").classList.add("hidden");
+}
 
   //TIMER
   const timer = document.getElementById("timer");
@@ -229,7 +273,7 @@ function decrementLives() {
 
 const timeLeft = document.querySelector(".time-left");
 
-let countdown = 60;
+let countdown = 30;
 const timer = setInterval(() => {
   countdown--;
 
@@ -244,3 +288,9 @@ const timer = setInterval(() => {
     gameOver();
   }
 }, 1000);
+
+var restartButton = document.getElementById("btn_restart");
+restartButton.addEventListener("click", function() {
+    location.reload();
+});
+
