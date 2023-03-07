@@ -218,8 +218,7 @@ p {
   left: -9%;
 }
 
-#score_board,
-#timer {
+#score_board {
   font-size: 75px;
   text-align: center;
   display: flex;
@@ -228,6 +227,7 @@ p {
   font-family: "Pixel Takhisis";
   color: #000000;
 }
+
 
 #coin_image {
   width: 15%;
@@ -263,4 +263,22 @@ button {
   border: 10px solid #022397;
   cursor: pointer;
   border-radius: 10px;
+}
+
+
+#time_container {
+  position: absolute;
+  width: 3%;
+  aspect-ratio: 6/30;
+  border: 2px solid black;
+  background-color: 208, 204, 204, 0.383;
+  top: 20%;
+  left: 100%;
+}
+#time_sprite {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: limegreen;
+  transform-origin: 50% 100%;
 }

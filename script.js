@@ -9,10 +9,40 @@ document.body.scrollTop = 0;
 let points = 0;
 let lives = 0;
 
+
+
 function ready() {
-  console.log("JavaScript ready!");
+  console.log("JavaScript kører");
   document.querySelector("#btn_start").addEventListener("click", startGame);
-  document.querySelector("#btn_restart").addEventListener("click", levelcomplete);
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
+  document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
+}
+
+function showStartScreen() {
+  document.querySelector("#start").classList.remove("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
+}
+
+function showGameScreen() {
+  document.querySelector("#start").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
+}
+
+function resetLives() {
+  lives = 3;
+  document.querySelector("#heart1").classList.remove("broken_heart");
+  document.querySelector("#heart2").classList.remove("broken_heart");
+  document.querySelector("#heart3").classList.remove("broken_heart");
+  document.querySelector("#heart1").classList.add("active_heart");
+  document.querySelector("#heart2").classList.add("active_heart");
+  document.querySelector("#heart3").classList.add("active_heart");
+}
+
+function resetPoints() {
+  points = 0;
+  displayPoints();
 }
 
 function startGame() {
@@ -24,7 +54,7 @@ function startGame() {
   startAllAnimations();
   resetLives();
   resetPoints();
-  // startTimer();
+  
 
   document.querySelector("#zombie1").classList.add("zombie1");
   document.querySelector("#zombie1").addEventListener("click", clickZombie1);
@@ -61,10 +91,11 @@ function startGame() {
   soundBG.volume = 0.2;
   soundBG.play();
 
+  startTimer();
+
+
   function resetLives() {
-    // sæt lives til 3
     lives = 3;
-    //nulstil visning af liv (hjerte vi ser)
     document.querySelector("#heart1").classList.remove("broken_heart");
     document.querySelector("#heart2").classList.remove("broken_heart");
     document.querySelector("#heart3").classList.remove("broken_heart");
@@ -74,12 +105,37 @@ function startGame() {
 }
 
 function resetPoints() {
-    // nulstil point
     points = 0;
-    // nulstil vising af point
     displayPoints();
 }
 }
+
+function gameOver() {
+  console.log("Game Over");
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
+  document.querySelector("#game_over").classList.remove("hidden");
+  document.querySelector("#soundLose").currentTime = 0;
+  document.querySelector("#soundLose").play();
+  stopGame();
+}
+
+function startTimer() {
+  document.querySelector("#time_sprite").classList.remove("shrink");
+  document.querySelector("#time_sprite").offsetWidth;
+  document.querySelector("#time_sprite").classList.add("shrink");
+  document.querySelector("#time_sprite").addEventListener("animationend", timerSlut);
+}
+
+ function timerSlut() {
+    console.log("Timeren er slut!");
+  
+    if (points >= 15) {
+      levelComplete();
+    } else {
+      gameOver();
+      stopGame();
+    }
+  }
 
 function startAllAnimations() {
   document.querySelector("#zombie1").classList.add("zombie1");
@@ -247,50 +303,8 @@ function decrementLives() {
     document.querySelector("#heart" + (lives + 1)).classList.remove("active_heart");
   }
 
-  function gameOver() {
-    console.log("Game Over");
-    document.querySelector("#btn_restart").addEventListener("click", startGame);
-    document.querySelector("#game_over").classList.remove("hidden");
-    document.querySelector("#soundLose").currentTime = 0;
-    document.querySelector("#soundLose").play();
-    stopGame();
-  }
-
-  document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
- 
-
-  function showStartScreen() {
-    document.querySelector("#start").classList.remove("hidden");
-    document.querySelector("#game_over").classList.add("hidden");
-    document.querySelector("#level_complete").classList.add("hidden");
-}
-
-  //TIMER
-  const timer = document.getElementById("timer");
-
-  let timeLeft = 30;
-}
-
-const timeLeft = document.querySelector(".time-left");
-
-let countdown = 30;
-const timer = setInterval(() => {
-  countdown--;
-
-  if (countdown < 10) {
-    timeLeft.innerHTML = `0${countdown}`;
-  } else {
-    timeLeft.innerHTML = countdown;
-  }
-
-  if (countdown === 0) {
-    clearInterval(timer);
-    gameOver();
-  }
-}, 1000);
-
 var restartButton = document.getElementById("btn_restart");
 restartButton.addEventListener("click", function() {
     location.reload();
 });
-
+}
