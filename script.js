@@ -14,8 +14,8 @@ let lives = 0;
 function ready() {
   console.log("JavaScript kører");
   document.querySelector("#btn_start").addEventListener("click", startGame);
-  document.querySelector("#btn_restart").addEventListener("click", startGame);
   document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
 }
 
 function showStartScreen() {
@@ -54,6 +54,8 @@ function startGame() {
   startAllAnimations();
   resetLives();
   resetPoints();
+  startPositioner();
+
   
 
   document.querySelector("#zombie1").classList.add("zombie1");
@@ -92,8 +94,8 @@ function startGame() {
   soundBG.play();
 
   startTimer();
-
-
+  
+  
   function resetLives() {
     lives = 3;
     document.querySelector("#heart1").classList.remove("broken_heart");
@@ -110,14 +112,6 @@ function resetPoints() {
 }
 }
 
-function gameOver() {
-  console.log("Game Over");
-  document.querySelector("#btn_restart").addEventListener("click", startGame);
-  document.querySelector("#game_over").classList.remove("hidden");
-  document.querySelector("#soundLose").currentTime = 0;
-  document.querySelector("#soundLose").play();
-  stopGame();
-}
 
 function startTimer() {
   document.querySelector("#time_sprite").classList.remove("shrink");
@@ -125,6 +119,7 @@ function startTimer() {
   document.querySelector("#time_sprite").classList.add("shrink");
   document.querySelector("#time_sprite").addEventListener("animationend", timerSlut);
 }
+
 
  function timerSlut() {
     console.log("Timeren er slut!");
@@ -190,7 +185,7 @@ function clickZombie4() {
   document.querySelector("#zombie4").addEventListener("animationend", zombieGone);
   document.querySelector("#zombie4").addEventListener("click", clickZombie4);
   document.querySelector("#soundMonster").currentTime = 0;
-  document.querySelector("#soundMonster").play();
+document.querySelector("#soundMonster").play();
   incrementPoints();
 }
 
@@ -267,7 +262,7 @@ function zombieRestart() {
 }
 
 function incrementPoints() {
-  points++;
+  points = points + 1;
   console.log("Giv point");
   displayPoints();
 
@@ -277,17 +272,10 @@ function incrementPoints() {
 }
 
 function displayPoints() {
-  console.log("vis point");
+  console.log("vis points");
   document.querySelector("#coin_count").textContent = points;
 }
 
-function levelComplete() {
-  document.querySelector("#btn_restart").addEventListener("click", startGame);
-  document.querySelector("#level_complete").classList.remove("hidden");
-  document.querySelector("#soundWin").currentTime = 0;
-  document.querySelector("#soundWin").play();
-  stopGame();
-}
 
 function decrementLives() {
   lives--;
@@ -307,4 +295,49 @@ var restartButton = document.getElementById("btn_restart");
 restartButton.addEventListener("click", function() {
     location.reload();
 });
+}
+
+
+function gameOver() {
+  console.log("Game Over");
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
+  document.querySelector("#game_over").classList.remove("hidden");
+  document.querySelector("#soundLose").currentTime = 0;
+  document.querySelector("#soundLose").play();
+  stopGame();
+}
+
+function levelComplete() {
+  document.querySelector("#level_complete").classList.remove("hidden");
+  document.querySelector("#soundWin").play();
+  stopGame();
+}
+
+function startPositioner() {
+document.querySelector("#zombie1").classList.add("position1");
+document.querySelector("#zombie2").classList.add("position2");
+document.querySelector("#zombie3").classList.add("position3");
+document.querySelector("#zombie4").classList.add("position4");
+document.querySelector("#zombie5").classList.add("position5");
+document.querySelector("#brain1").classList.add("position6");
+document.querySelector("#brain2").classList.add("position7");
+}
+
+function stopGame() {
+  console.log("stop game");
+  isGameRunning = false;
+
+  document.querySelector("#zombie1").classList.remove("zombie1");
+  document.querySelector("#zombie2").classList.remove("zombie2");
+  document.querySelector("#zombie3").classList.remove("zombie3");
+  document.querySelector("#zombie4").classList.remove("zombie4");
+  document.querySelector("#zombie5").classList.remove("zombie5");
+
+  document.querySelector("#zombie1").removeEventListener("mousedown", clickZombie1);
+  document.querySelector("#zombi2").removeEventListener("mousedown", clickZombie2);
+  document.querySelector("#zombie3").removeEventListener("mousedown", clickZombie3);
+  document.querySelector("#zombie4").removeEventListener("mousedown", clickZombie4);
+  document.querySelector("#zombie5").removeEventListener("mousedown", clickZombie5);
+ 
+  document.querySelector("#sound_game").pause();
 }

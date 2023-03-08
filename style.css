@@ -42,7 +42,8 @@ p {
   position: relative;
 }
 
-#level_complete, #start {
+#level_complete,
+#start {
   grid-area: 1 /1;
   z-index: 999;
   display: grid;
@@ -50,6 +51,7 @@ p {
   align-content: center;
   background-image: linear-gradient(150deg, #031002 0%, #09793b 100%);
   color: #ffffff;
+  background-size: cover;
 }
 
 #start {
@@ -190,6 +192,14 @@ p {
   left: -20vw;
 }
 
+.position6 {
+  left: -60vw;
+}
+
+.position7 {
+  left: -20vw;
+}
+
 .active_heart {
   filter: drop-shadow(px green);
 }
@@ -198,14 +208,6 @@ p {
   filter: grayscale(75%) blur(0.5px);
 }
 
-/* #game_ui {
-  position: absolute;
-  top: 1vw;
-  right: 80vw;
-  color: rgb(0, 0, 0);
-  font-size: 3em;
-  pointer-events: none;
-} */
 
 #game_ui {
   display: grid;

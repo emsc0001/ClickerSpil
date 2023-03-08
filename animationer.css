@@ -146,10 +146,7 @@
     100% {
         transform: translate(100%,0) scale(15) rotate(90deg);
         opacity: 0;
-    }
-
-
-    
+    }    
 }
 
 .paused {
